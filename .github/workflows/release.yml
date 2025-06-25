@@ -63,12 +63,8 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: 1.24.2
-      - name: Install WinPcap Silently
-        run: |
-          $tempDir = "$env:TEMP\WinPcap"
-          New-Item -Path $tempDir -ItemType Directory -Force
-          Invoke-WebRequest -Uri "https://www.winpcap.org/install/bin/WinPcap_4_1_3.exe" -OutFile "$tempDir\WinPcap.exe"
-          Start-Process -FilePath "$tempDir\WinPcap.exe" -ArgumentList "/S" -Wait
+      - name: Install Dependences
+        run: choco install nmap -y
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
