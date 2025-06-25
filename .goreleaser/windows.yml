@@ -10,7 +10,7 @@ builds:
       - -s -w
     binary: noon
     env:
-      - CGO_ENABLED=1 # necessary only with npcap
+      - CGO_ENABLED=1 # necessary only with winpcap
     main: ./noon.go
     goos:
       - windows
